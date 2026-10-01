@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carley Thompson | Accounting Portfolio</title>
+
+<style>
+    :root {
+        --navy: #18243a;
+        --blue: #355c8a;
+        --light-blue: #eef4fb;
+        --cream: #faf8f4;
+        --gold: #c89b5b;
+        --text: #273142;
+        --muted: #667085;
+        --white: #ffffff;
+        --border: #e5e7eb;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text);
+        background: var(--cream);
+        line-height: 1.65;
+    }
+
+    /* Navigation */
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(24, 36, 58, 0.97);
+        padding: 14px 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav .brand {
+        color: white;
+        font-weight: 700;
+        letter-spacing: .04em;
+    }
+
+    nav a {
+        color: #eef2f7;
+        text-decoration: none;
+        margin-left: 24px;
+        font-size: .95rem;
+    }
+
+    nav a:hover {
+        color: #f1cf9a;
+    }
+
+    /* Hero Section */
+    .hero {
+        min-height: 76vh;
+        display: grid;
+        grid-template-columns: 1.25fr .75fr;
+        align-items: center;
+        gap: 60px;
+        padding: 80px 8%;
+        background:
+            radial-gradient(
+                circle at 90% 15%,
+                rgba(200,155,91,.16),
+                transparent 28%
+            ),
+            linear-gradient(
+                135deg,
+                #f7f8fb 0%,
+                #eef3f9 100%
+            );
+    }
+
+    .eyebrow {
+        color: var(--blue);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        font-size: .82rem;
+    }
+
+    h1 {
+        font-size: clamp(2.7rem, 6vw, 5rem);
+        line-height: 1.05;
+        margin: 12px 0 20px;
+        color: var(--navy);
+    }
+
+    .hero p {
+        font-size: 1.15rem;
+        max-width: 720px;
+        color: #4b5565;
+    }
+
+    .cta {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 12px 20px;
+        border-radius: 999px;
+        background: var(--navy);
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+    }
+
+    .cta:hover {
+        background: var(--blue);
+    }
+
+    /* Profile Photo */
+    .photo-wrap {
+        display: flex;
+        justify-content: center;
+    }
+
+    .photo {
+        width: min(330px, 75vw);
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 10px solid white;
+        box-shadow: 0 20px 60px rgba(24,36,58,.18);
+    }
+
+    /* General Sections */
+    section {
+        padding: 80px 8%;
+    }
+
+    .section-title {
+        color: var(--navy);
+        font-size: 2rem;
+        margin: 0 0 12px;
+    }
+
+    .section-intro {
+        max-width: 780px;
+        color: var(--muted);
+        margin-bottom: 36px;
+    }
+
+    /* About */
+    .about {
+        background: white;
+    }
+
+    .highlight-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 32px;
+    }
+
+    .highlight {
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: #fff;
+    }
+
+    .highlight strong {
+        display: block;
+        color: var(--navy);
+        font-size: 1.05rem;
+        margin-bottom: 6px;
+    }
+
+    /* Projects */
+    .projects {
+        background: var(--light-blue);
+    }
+
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+
+    .project-card {
+        background: white;
+        border-radius: 18px;
+        padding: 30px;
+        border: 1px solid #dfe7f0;
+        box-shadow: 0 10px 30px rgba(24,36,58,.06);
+    }
+
+    .project-number {
+        display: inline-flex;
+        width: 36px;
+        height: 36px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--navy);
+        color: white;
+        font-weight: 700;
+        margin-bottom: 14px;
+    }
+
+    .project-card h3 {
+        margin: 0 0 10px;
+        color: var(--navy);
+        font-size: 1.35rem;
+    }
+
+    .project-card ul {
+        padding-left: 20px;
+    }
+
+    .project-card li {
+        margin-bottom: 8px;
+    }
+
+    .project-link {
+        display: inline-block;
+        margin-top: 10px;
+        color: var(--blue);
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .project-link:hover {
+        text-decoration: underline;
+    }
+
+    /* Skills */
+    .skills {
+        background: white;
+    }
+
+    .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+    }
+
+    .skill {
+        background: var(--light-blue);
+        color: var(--navy);
+        border: 1px solid #dce7f3;
+        padding: 10px 16px;
+        border-radius: 999px;
+        font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+        background: var(--navy);
+        color: #dbe3ee;
+        text-align: center;
+        padding: 38px 8%;
+    }
+
+    footer strong {
+        color: white;
+    }
+
+    /* Mobile */
+    @media (max-width: 800px) {
+
+        nav {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        nav a {
+            margin: 0 8px;
+        }
+
+        .hero {
+            grid-template-columns: 1fr;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        .hero p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlight-grid,
+        .project-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+
+    <div class="brand">
+        CARLEY THOMPSON
+    </div>
+
+    <div>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+<header class="hero">
+
+    <div>
+
+        <div class="eyebrow">
+            Accounting • Rutgers Business School
+        </div>
+
+        <h1>
+            Carley Thompson
+        </h1>
+
+        <p>
+            I am Carley Thompson, a sophomore accounting student at
+            Rutgers Business School, aspiring to earn my CPA by 2029
+            and eager to advance my studies in audit and accounting
+            fields.
+        </p>
+
+        <a class="cta" href="#projects">
+            View My Projects
+        </a>
+
+    </div>
+
+
+    <div class="photo-wrap">
+
+        <!-- Replace "profile.jpg" with the name of your photo -->
+        <img
+            class="photo"
+            src="profile.jpg"
+            alt="Profile photo of Carley Thompson"
+        >
+
+    </div>
+
+</header>
+
+
+<!-- ABOUT -->
+<section id="about" class="about">
+
+    <h2 class="section-title">
+        About Me
+    </h2>
+
+    <p class="section-intro">
+        I am currently building my accounting foundation through
+        coursework and practical experiences. My goal is to continue
+        exploring different areas of accounting while developing the
+        technical, organizational, and leadership skills that will
+        support my path toward becoming a CPA.
+    </p>
+
+
+    <div class="highlight-grid">
+
+        <div class="highlight">
+
+            <strong>
+                Education
+            </strong>
+
+            Rutgers Business School
+
+        </div>
+
+
+        <div class="highlight">
+
+            <strong>
+                Graduation
+            </strong>
+
+            May 2029
+
+        </div>
+
+
+        <div class="highlight">
+
+            <strong>
+                Career Goal
+            </strong>
+
+            CPA with an interest in audit and accounting
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects" class="projects">
+
+    <h2 class="section-title">
+        Featured Projects
+    </h2>
+
+    <p class="section-intro">
+        These projects gave me opportunities to apply business
+        concepts, accounting analysis, Excel-based work, research,
+        teamwork, and professional problem-solving to realistic
+        business situations.
+    </p>
+
+
+    <div class="project-grid">
+
+
+        <!-- FORAGE PROJECT -->
+        <article class="project-card">
+
+            <div class="project-number">
+                01
+            </div>
+
+            <h3>
+                Ryan, LLC Property Tax Consulting Job Simulation
+            </h3>
+
+            <p>
+                Through the Forage simulation, I stepped into the role
+                of a Ryan tax associate working with Paseo Hotels.
+                The project introduced me to property tax consulting,
+                valuation, due diligence, and the use of Excel in
+                accounting-related analysis.
+            </p>
+
+            <ul>
+
+                <li>
+                    Used the sales comparison approach to estimate
+                    hotel property values.
+                </li>
+
+                <li>
+                    Worked with market data, room counts, and property
+                    adjustments in Excel.
+                </li>
+
+                <li>
+                    Applied the income capitalization approach during
+                    a boutique-hotel acquisition due diligence task.
+                </li>
+
+                <li>
+                    Developed practical experience with property tax
+                    consulting and reflected on areas of accounting
+                    I want to explore further.
+                </li>
+
+            </ul>
+
+            <a
+                class="project-link"
+                href="Forage - Carley Thompson.pdf"
+                target="_blank"
+            >
+                View Project PDF →
+            </a>
+
+        </article>
+
+
+        <!-- BURLINGTON PROJECT -->
+        <article class="project-card">
+
+            <div class="project-number">
+                02
+            </div>
+
+            <h3>
+                Burlington Corporation — Group 5
+            </h3>
+
+            <p>
+                In this group project, my team researched Burlington's
+                Garfield, New Jersey location and examined employee
+                turnover, motivation, compensation, scheduling,
+                recognition, communication, and perceptions of fairness.
+            </p>
+
+            <ul>
+
+                <li>
+                    Collected information through employee and manager
+                    interviews, surveys, and secondary research.
+                </li>
+
+                <li>
+                    Used Herzberg's Motivation-Hygiene Theory and
+                    distributive/procedural justice to analyze the
+                    management issue.
+                </li>
+
+                <li>
+                    Recommended a consistent employee-recognition
+                    system and clearer, fairer scheduling communication.
+                </li>
+
+                <li>
+                    Connected recommendations to examples from
+                    organizations such as Costco, Whole Foods,
+                    Google, and Adobe.
+                </li>
+
+            </ul>
+
+            <a
+                class="project-link"
+                href="T8 - Burlington (1).pptx"
+                target="_blank"
+            >
+                View Project Presentation →
+            </a>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills" class="skills">
+
+    <h2 class="section-title">
+        Skills
+    </h2>
+
+    <p class="section-intro">
+        A combination of technical, organizational, leadership,
+        and operational skills that I am continuing to develop
+        through school, work, and project experience.
+    </p>
+
+
+    <div class="skill-list">
+
+        <span class="skill">
+            Excel
+        </span>
+
+        <span class="skill">
+            Personal Assistance
+        </span>
+
+        <span class="skill">
+            Leadership
+        </span>
+
+        <span class="skill">
+            Optimum Control
+        </span>
+
+        <span class="skill">
+            Aloha Configurations
+        </span>
+
+        <span class="skill">
+            Project Management
+        </span>
+
+        <span class="skill">
+            Time Management
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        <strong>
+            Carley Thompson
+        </strong>
+    </p>
+
+    <p>
+        Rutgers Business School • Accounting •
+        Expected Graduation: May 2029
+    </p>
+
+</footer>
+
+</body>
+</html>
