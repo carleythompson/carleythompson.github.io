@@ -1,331 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Carley Thompson | Accounting Portfolio</title>
+    <meta charset="UTF-8">
 
-<style>
-    :root {
-        --navy: #18243a;
-        --blue: #355c8a;
-        --light-blue: #eef4fb;
-        --cream: #faf8f4;
-        --gold: #c89b5b;
-        --text: #273142;
-        --muted: #667085;
-        --white: #ffffff;
-        --border: #e5e7eb;
-    }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    * {
-        box-sizing: border-box;
-    }
+    <title>Carley Thompson | Accounting Portfolio</title>
 
-    html {
-        scroll-behavior: smooth;
-    }
+    <style>
 
-    body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        color: var(--text);
-        background: var(--cream);
-        line-height: 1.65;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Navigation */
-    nav {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        background: rgba(24, 36, 58, 0.97);
-        padding: 14px 6%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    nav .brand {
-        color: white;
-        font-weight: 700;
-        letter-spacing: .04em;
-    }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f7f8fa;
+            color: #263238;
+            line-height: 1.6;
+        }
 
-    nav a {
-        color: #eef2f7;
-        text-decoration: none;
-        margin-left: 24px;
-        font-size: .95rem;
-    }
-
-    nav a:hover {
-        color: #f1cf9a;
-    }
-
-    /* Hero Section */
-    .hero {
-        min-height: 76vh;
-        display: grid;
-        grid-template-columns: 1.25fr .75fr;
-        align-items: center;
-        gap: 60px;
-        padding: 80px 8%;
-        background:
-            radial-gradient(
-                circle at 90% 15%,
-                rgba(200,155,91,.16),
-                transparent 28%
-            ),
-            linear-gradient(
-                135deg,
-                #f7f8fb 0%,
-                #eef3f9 100%
-            );
-    }
-
-    .eyebrow {
-        color: var(--blue);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: .12em;
-        font-size: .82rem;
-    }
-
-    h1 {
-        font-size: clamp(2.7rem, 6vw, 5rem);
-        line-height: 1.05;
-        margin: 12px 0 20px;
-        color: var(--navy);
-    }
-
-    .hero p {
-        font-size: 1.15rem;
-        max-width: 720px;
-        color: #4b5565;
-    }
-
-    .cta {
-        display: inline-block;
-        margin-top: 18px;
-        padding: 12px 20px;
-        border-radius: 999px;
-        background: var(--navy);
-        color: white;
-        text-decoration: none;
-        font-weight: 700;
-    }
-
-    .cta:hover {
-        background: var(--blue);
-    }
-
-    /* Profile Photo */
-    .photo-wrap {
-        display: flex;
-        justify-content: center;
-    }
-
-    .photo {
-        width: min(330px, 75vw);
-        aspect-ratio: 1;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 10px solid white;
-        box-shadow: 0 20px 60px rgba(24,36,58,.18);
-    }
-
-    /* General Sections */
-    section {
-        padding: 80px 8%;
-    }
-
-    .section-title {
-        color: var(--navy);
-        font-size: 2rem;
-        margin: 0 0 12px;
-    }
-
-    .section-intro {
-        max-width: 780px;
-        color: var(--muted);
-        margin-bottom: 36px;
-    }
-
-    /* About */
-    .about {
-        background: white;
-    }
-
-    .highlight-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        margin-top: 32px;
-    }
-
-    .highlight {
-        padding: 24px;
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        background: #fff;
-    }
-
-    .highlight strong {
-        display: block;
-        color: var(--navy);
-        font-size: 1.05rem;
-        margin-bottom: 6px;
-    }
-
-    /* Projects */
-    .projects {
-        background: var(--light-blue);
-    }
-
-    .project-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 28px;
-    }
-
-    .project-card {
-        background: white;
-        border-radius: 18px;
-        padding: 30px;
-        border: 1px solid #dfe7f0;
-        box-shadow: 0 10px 30px rgba(24,36,58,.06);
-    }
-
-    .project-number {
-        display: inline-flex;
-        width: 36px;
-        height: 36px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        background: var(--navy);
-        color: white;
-        font-weight: 700;
-        margin-bottom: 14px;
-    }
-
-    .project-card h3 {
-        margin: 0 0 10px;
-        color: var(--navy);
-        font-size: 1.35rem;
-    }
-
-    .project-card ul {
-        padding-left: 20px;
-    }
-
-    .project-card li {
-        margin-bottom: 8px;
-    }
-
-    .project-link {
-        display: inline-block;
-        margin-top: 10px;
-        color: var(--blue);
-        font-weight: 700;
-        text-decoration: none;
-    }
-
-    .project-link:hover {
-        text-decoration: underline;
-    }
-
-    /* Skills */
-    .skills {
-        background: white;
-    }
-
-    .skill-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 28px;
-    }
-
-    .skill {
-        background: var(--light-blue);
-        color: var(--navy);
-        border: 1px solid #dce7f3;
-        padding: 10px 16px;
-        border-radius: 999px;
-        font-weight: 600;
-    }
-
-    /* Footer */
-    footer {
-        background: var(--navy);
-        color: #dbe3ee;
-        text-align: center;
-        padding: 38px 8%;
-    }
-
-    footer strong {
-        color: white;
-    }
-
-    /* Mobile */
-    @media (max-width: 800px) {
+        /* =========================
+           NAVIGATION
+        ========================= */
 
         nav {
-            flex-direction: column;
-            gap: 8px;
+            background-color: #18243a;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav h2 {
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
         }
 
         nav a {
-            margin: 0 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
         }
 
+        nav a:hover {
+            color: #d7b27a;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
         .hero {
-            grid-template-columns: 1fr;
-            text-align: center;
-            padding-top: 60px;
+            min-height: 85vh;
+            padding: 80px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 60px;
+
+            background: linear-gradient(
+                135deg,
+                #f7f9fc,
+                #eaf0f7
+            );
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .small-title {
+            color: #41678f;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            color: #18243a;
+            margin-bottom: 20px;
         }
 
         .hero p {
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 20px;
+            color: #536170;
+            margin-bottom: 30px;
         }
 
-        .highlight-grid,
-        .project-grid {
-            grid-template-columns: 1fr;
+        .button {
+            display: inline-block;
+            background-color: #18243a;
+            color: white;
+            text-decoration: none;
+            padding: 13px 24px;
+            border-radius: 25px;
+            font-weight: bold;
         }
-    }
-</style>
+
+        .button:hover {
+            background-color: #41678f;
+        }
+
+
+        /* =========================
+           PROFILE PHOTO
+        ========================= */
+
+        .photo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-photo {
+            width: 330px;
+            height: 330px;
+
+            /* Keeps your JPEG as an external file */
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 10px solid white;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.18);
+        }
+
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            font-size: 38px;
+            color: #18243a;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            max-width: 750px;
+            color: #687381;
+            margin-bottom: 40px;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        #about {
+            background-color: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .about-card {
+            border: 1px solid #e1e5ea;
+            padding: 25px;
+            border-radius: 15px;
+            background-color: #ffffff;
+        }
+
+        .about-card h3 {
+            color: #18243a;
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        #projects {
+            background-color: #edf3f9;
+        }
+
+        .project-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            padding: 35px;
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.06);
+        }
+
+        .project-number {
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 50%;
+
+            background-color: #18243a;
+            color: white;
+
+            font-weight: bold;
+
+            margin-bottom: 20px;
+        }
+
+        .project-card h3 {
+            color: #18243a;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: #596573;
+            margin-bottom: 20px;
+        }
+
+        .project-card ul {
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        .project-card li {
+            margin-bottom: 10px;
+        }
+
+        .project-link {
+            color: #41678f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        #skills {
+            background-color: white;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill {
+            background-color: #edf3f9;
+            color: #18243a;
+
+            padding: 12px 20px;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            border: 1px solid #d8e1eb;
+        }
+
+
+        /* =========================
+           CAREER GOAL
+        ========================= */
+
+        .career {
+            background-color: #18243a;
+            color: white;
+            text-align: center;
+        }
+
+        .career h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .career p {
+            max-width: 750px;
+            margin: auto;
+            color: #d9e0e8;
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background-color: #101927;
+            color: #d8dee7;
+            text-align: center;
+            padding: 35px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 60px;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .profile-photo {
+                width: 260px;
+                height: 260px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-container {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<!-- NAVIGATION -->
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <nav>
 
-    <div class="brand">
-        CARLEY THOMPSON
-    </div>
+    <h2>CARLEY THOMPSON</h2>
 
-    <div>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-    </div>
+    <ul>
+
+        <li>
+            <a href="#about">About</a>
+        </li>
+
+        <li>
+            <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+            <a href="#skills">Skills</a>
+        </li>
+
+        <li>
+            <a href="#career">Career</a>
+        </li>
+
+    </ul>
 
 </nav>
 
 
-<!-- HERO -->
+
+<!-- =========================
+     HERO
+========================= -->
+
 <header class="hero">
 
-    <div>
+    <div class="hero-text">
 
-        <div class="eyebrow">
-            Accounting • Rutgers Business School
+        <div class="small-title">
+            Rutgers Business School • Accounting
         </div>
 
         <h1>
@@ -333,26 +435,35 @@
         </h1>
 
         <p>
-            I am Carley Thompson, a sophomore accounting student at
-            Rutgers Business School, aspiring to earn my CPA by 2029
-            and eager to advance my studies in audit and accounting
-            fields.
+            I am Carley Thompson, a sophomore accounting student
+            at Rutgers Business School, aspiring to earn my CPA
+            by 2029, eager to advance my studies in audit and
+            accounting fields!
         </p>
 
-        <a class="cta" href="#projects">
+        <a
+            class="button"
+            href="#projects"
+        >
             View My Projects
         </a>
 
     </div>
 
 
-    <div class="photo-wrap">
+    <!--
+        YOUR PHOTO
 
-        <!-- Replace "profile.jpg" with the name of your photo -->
+        Make sure image0.jpeg is in the
+        SAME GitHub folder as index.html.
+    -->
+
+    <div class="photo-container">
+
         <img
-            class="photo"
-            src="profile.jpg"
-            alt="Profile photo of Carley Thompson"
+            src="image0.jpeg"
+            alt="Carley Thompson profile photo"
+            class="profile-photo"
         >
 
     </div>
@@ -360,53 +471,67 @@
 </header>
 
 
-<!-- ABOUT -->
-<section id="about" class="about">
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
 
     <h2 class="section-title">
         About Me
     </h2>
 
-    <p class="section-intro">
-        I am currently building my accounting foundation through
-        coursework and practical experiences. My goal is to continue
-        exploring different areas of accounting while developing the
-        technical, organizational, and leadership skills that will
-        support my path toward becoming a CPA.
+    <p class="section-description">
+
+        I am a sophomore accounting student at Rutgers Business
+        School building my foundation in accounting and business.
+        I am interested in exploring different areas of accounting,
+        particularly audit, while developing the skills and
+        experience needed for my future career.
+
     </p>
 
 
-    <div class="highlight-grid">
+    <div class="about-grid">
 
-        <div class="highlight">
 
-            <strong>
+        <div class="about-card">
+
+            <h3>
                 Education
-            </strong>
+            </h3>
 
-            Rutgers Business School
-
-        </div>
-
-
-        <div class="highlight">
-
-            <strong>
-                Graduation
-            </strong>
-
-            May 2029
+            <p>
+                Rutgers Business School
+            </p>
 
         </div>
 
 
-        <div class="highlight">
+        <div class="about-card">
 
-            <strong>
+            <h3>
+                Expected Graduation
+            </h3>
+
+            <p>
+                May 2029
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <h3>
                 Career Goal
-            </strong>
+            </h3>
 
-            CPA with an interest in audit and accounting
+            <p>
+                Earn my CPA and continue developing
+                my knowledge in audit and accounting.
+            </p>
 
         </div>
 
@@ -415,81 +540,96 @@
 </section>
 
 
-<!-- PROJECTS -->
-<section id="projects" class="projects">
+
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<section id="projects">
 
     <h2 class="section-title">
-        Featured Projects
+        My Projects
     </h2>
 
-    <p class="section-intro">
-        These projects gave me opportunities to apply business
-        concepts, accounting analysis, Excel-based work, research,
-        teamwork, and professional problem-solving to realistic
-        business situations.
+    <p class="section-description">
+
+        My academic and professional projects have allowed me
+        to apply accounting, business analysis, research,
+        Excel, teamwork, and problem-solving skills to
+        real-world business situations.
+
     </p>
 
 
-    <div class="project-grid">
+    <div class="project-container">
 
 
-        <!-- FORAGE PROJECT -->
-        <article class="project-card">
+        <!-- FORAGE -->
+
+        <div class="project-card">
 
             <div class="project-number">
                 01
             </div>
 
             <h3>
-                Ryan, LLC Property Tax Consulting Job Simulation
+                Forage — Property Tax Consulting
             </h3>
 
             <p>
-                Through the Forage simulation, I stepped into the role
-                of a Ryan tax associate working with Paseo Hotels.
-                The project introduced me to property tax consulting,
-                valuation, due diligence, and the use of Excel in
-                accounting-related analysis.
+
+                I completed the Ryan, LLC Property Tax Consulting
+                Job Simulation through Forage. The experience
+                introduced me to property tax consulting and
+                commercial real estate valuation.
+
             </p>
 
             <ul>
 
                 <li>
-                    Used the sales comparison approach to estimate
-                    hotel property values.
+                    Completed commercial real estate valuation
+                    using the sales comparison method.
                 </li>
 
                 <li>
-                    Worked with market data, room counts, and property
-                    adjustments in Excel.
+                    Worked with hotel property information
+                    and Excel-based calculations.
                 </li>
 
                 <li>
-                    Applied the income capitalization approach during
-                    a boutique-hotel acquisition due diligence task.
+                    Completed due diligence using the income
+                    capitalization approach.
                 </li>
 
                 <li>
-                    Developed practical experience with property tax
-                    consulting and reflected on areas of accounting
-                    I want to explore further.
+                    Gained exposure to the work of a property
+                    tax consultant and real-world accounting tasks.
                 </li>
 
             </ul>
 
+
+            <!--
+                Rename your PDF on GitHub to:
+                forage-project.pdf
+            -->
+
             <a
                 class="project-link"
-                href="Forage - Carley Thompson.pdf"
+                href="forage-project.pdf"
                 target="_blank"
             >
-                View Project PDF →
+                View Forage Project →
             </a>
 
-        </article>
+        </div>
 
 
-        <!-- BURLINGTON PROJECT -->
-        <article class="project-card">
+
+        <!-- BURLINGTON -->
+
+        <div class="project-card">
 
             <div class="project-number">
                 02
@@ -500,117 +640,159 @@
             </h3>
 
             <p>
-                In this group project, my team researched Burlington's
-                Garfield, New Jersey location and examined employee
-                turnover, motivation, compensation, scheduling,
-                recognition, communication, and perceptions of fairness.
+
+                For my Burlington project, my group researched
+                workforce and management issues at Burlington's
+                Garfield, New Jersey location. We examined
+                employee turnover, motivation, compensation,
+                scheduling, recognition, communication, and
+                perceptions of fairness.
+
             </p>
 
             <ul>
 
                 <li>
-                    Collected information through employee and manager
-                    interviews, surveys, and secondary research.
+                    Used interviews, employee surveys, and
+                    secondary research.
                 </li>
 
                 <li>
-                    Used Herzberg's Motivation-Hygiene Theory and
-                    distributive/procedural justice to analyze the
-                    management issue.
+                    Examined employee motivation using
+                    Herzberg's Motivation-Hygiene Theory.
                 </li>
 
                 <li>
-                    Recommended a consistent employee-recognition
-                    system and clearer, fairer scheduling communication.
+                    Analyzed distributive and procedural justice
+                    related to scheduling and compensation.
                 </li>
 
                 <li>
-                    Connected recommendations to examples from
-                    organizations such as Costco, Whole Foods,
-                    Google, and Adobe.
+                    Developed recommendations involving
+                    recognition, communication, scheduling,
+                    and employee feedback.
                 </li>
 
             </ul>
 
+
+            <!--
+                Rename your PowerPoint on GitHub to:
+                burlington-project.pptx
+            -->
+
             <a
                 class="project-link"
-                href="T8 - Burlington (1).pptx"
+                href="burlington-project.pptx"
                 target="_blank"
             >
-                View Project Presentation →
+                View Burlington Project →
             </a>
 
-        </article>
+        </div>
+
 
     </div>
 
 </section>
 
 
-<!-- SKILLS -->
-<section id="skills" class="skills">
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section id="skills">
 
     <h2 class="section-title">
         Skills
     </h2>
 
-    <p class="section-intro">
-        A combination of technical, organizational, leadership,
-        and operational skills that I am continuing to develop
-        through school, work, and project experience.
+    <p class="section-description">
+
+        Skills I have developed through my education,
+        work experience, and project-based learning.
+
     </p>
 
 
-    <div class="skill-list">
+    <div class="skills-container">
 
-        <span class="skill">
+        <div class="skill">
             Excel
-        </span>
+        </div>
 
-        <span class="skill">
+        <div class="skill">
             Personal Assistance
-        </span>
+        </div>
 
-        <span class="skill">
+        <div class="skill">
             Leadership
-        </span>
+        </div>
 
-        <span class="skill">
+        <div class="skill">
             Optimum Control
-        </span>
+        </div>
 
-        <span class="skill">
+        <div class="skill">
             Aloha Configurations
-        </span>
+        </div>
 
-        <span class="skill">
+        <div class="skill">
             Project Management
-        </span>
+        </div>
 
-        <span class="skill">
+        <div class="skill">
             Time Management
-        </span>
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- FOOTER -->
+
+<!-- =========================
+     CAREER GOAL
+========================= -->
+
+<section id="career" class="career">
+
+    <h2>
+        My Career Goal
+    </h2>
+
+    <p>
+
+        I am working toward graduating from Rutgers Business
+        School in May 2029 and earning my CPA. I am especially
+        interested in continuing to develop my knowledge and
+        experience in audit and accounting while gaining
+        practical experience in the business world.
+
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
     <p>
-        <strong>
-            Carley Thompson
-        </strong>
+        <strong>Carley Thompson</strong>
     </p>
 
     <p>
-        Rutgers Business School • Accounting •
-        Expected Graduation: May 2029
+        Rutgers Business School • Accounting • Class of 2029
     </p>
 
 </footer>
 
+
 </body>
+
 </html>
